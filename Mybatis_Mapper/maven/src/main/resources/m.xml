@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    environments:配置数据库连接环境信息，我们可以连接多个数据库，通过<environments default="test">进行切换
+
+    可以通过<typeAliases>
+        <package name="org.example"/>
+    </typeAliases>给包起别名，在映射文件里resultType="org.example.User"指向mapper接口所要写的地址，这里的地址因为有别名所以可以直接写别名包下任意一个文件的文件名，
+    不需要在文件名前写包名，且这个文件名不区分大小写。如resultType="user"
+
+    也可以一个一个文件的配，如：
+    <typeAliases>
+        <typeAlias alias="Author" type="domain.blog.Author"/>
+        <typeAlias alias="Blog" type="domain.blog.Blog"/>
+        <typeAlias alias="Comment" type="domain.blog.Comment"/>
+        <typeAlias alias="Post" type="domain.blog.Post"/>
+        <typeAlias alias="Section" type="domain.blog.Section"/>
+        <typeAlias alias="Tag" type="domain.blog.Tag"/>
+    </typeAliases>
+    具体说明连接：https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases
+
+    xml写核心配制命令是要按照
+            configuration（配置）
+            properties（属性）
+            settings（设置）
+            typeAliases（类型别名）
+            typeHandlers（类型处理器）
+            objectFactory（对象工厂）
+            plugins（插件）
+            environments（环境配置）
+            environment（环境变量）
+            transactionManager（事务管理器）
+            dataSource（数据源）
+            databaseIdProvider（数据库厂商标识）
+            mappers（映射器）
+            这个顺序写不然报错
+    -->
+
+    <typeAliases>
+        <package name="org.example"/>
+    </typeAliases>
+    <environments default="test">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///student"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Ling002688ling."/>
+            </dataSource>
+        </environment>
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///student"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Ling002688ling."/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="example\Usermapper\Usermapper.xml"/>
+    </mappers>
+</configuration>

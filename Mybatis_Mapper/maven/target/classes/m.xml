@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    environments:配置数据库连接环境信息，我们可以连接多个数据库，通过<environments default="test">进行切换
+
+    可以通过<typeAliases>
+        <package name="org.example"/>
+    </typeAliases>给包起别名，在映射文件里resultType="org.example.User"指向mapper接口所要写的地址，这里的地址因为有别名所以可以直接写别名包下任意一个文件的文件名，
+    不需要在文件名前写包名，且这个文件名不区分大小写。
+    -->
+
+    <typeAliases>
+        <package name="org.example"/>
+    </typeAliases>
+    <environments default="test">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///student"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Ling002688ling."/>
+            </dataSource>
+        </environment>
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///student"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Ling002688ling."/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="example\Usermapper\Usermapper.xml"/>
+    </mappers>
+</configuration>
